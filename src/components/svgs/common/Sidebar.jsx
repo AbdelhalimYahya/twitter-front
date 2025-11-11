@@ -12,7 +12,7 @@ const Sidebar = () => {
 	const { mutate: logout } = useMutation({
 		mutationFn: async () => {
 			try {
-				const res = await fetch("/api/auth/logout", {
+				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/auth/logout", {
 					method: "POST",
 				});
 				const data = await res.json();
@@ -37,7 +37,7 @@ const Sidebar = () => {
 		queryKey: ["authUser"],
 		queryFn: async () => {
 			try {
-				const res = await fetch("/api/auth/me");
+				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/auth/me");
 				const data = await res.json();
 				if (data.error) return null;
 				if (!res.ok) {
