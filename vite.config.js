@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
+const backendURL = 'https://twitter-back-production-5485.up.railway.app';
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -10,11 +12,11 @@ export default defineConfig({
   ],
   server: {
     proxy: {
+      // Proxy API requests to the backend server
       '/api': {
-        target: 'https://twitter-back-production-5485.up.railway.app',
+        target: backendURL,
         changeOrigin: true,
         secure: false,
-        
       },
     },
   },
