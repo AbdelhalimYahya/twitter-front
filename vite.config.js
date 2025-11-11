@@ -14,6 +14,7 @@ export default defineConfig({
         target: 'https://twitter-back-production-5485.up.railway.app',
         changeOrigin: true,
         secure: false,
+        
       },
     },
   },
