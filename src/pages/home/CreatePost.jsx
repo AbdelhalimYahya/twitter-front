@@ -14,7 +14,7 @@ const CreatePost = () => {
 		queryKey: ["authUser"],
 		queryFn: async () => {
 			try {
-				const res = await fetch("/api/auth/me");
+				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/auth/me");
 				const data = await res.json();
 				if (data.error) return null;
 				if (!res.ok) {
@@ -37,7 +37,7 @@ const CreatePost = () => {
 	} = useMutation({
 		mutationFn: async ({ text, img }) => {
 			try {
-				const res = await fetch("/api/posts/create", {
+				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/posts/create", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

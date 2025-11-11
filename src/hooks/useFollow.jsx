@@ -7,7 +7,7 @@ const useFollow = () => {
 	const { mutate: follow, isPending } = useMutation({
 		mutationFn: async (userId) => {
 			try {
-				const res = await fetch(`/api/users/follow/${userId}`, {
+				const res = await fetch(`https://twitter-back-production-5485.up.railway.app/api/users/follow/${userId}`, {
 					method: "POST",
 				});
 
