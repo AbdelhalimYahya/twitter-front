@@ -11,9 +11,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://twitter-back-production-5485.up.railway.app/api',
+        target: 'https://twitter-back-production-5485.up.railway.app',
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
       },
     },
   },
