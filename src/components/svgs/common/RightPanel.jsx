@@ -9,7 +9,9 @@ const RightPanel = () => {
 		queryKey: ["suggestedUsers"],
 		queryFn: async () => {
 			try {
-				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/users/suggested");
+				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/users/suggested" , {
+					credentials: "include",
+				});
 				const data = await res.json();
 				if (!res.ok) {
 					throw new Error(data.error || "Something went wrong!");

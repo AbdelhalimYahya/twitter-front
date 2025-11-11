@@ -9,6 +9,7 @@ const useUpdateUserProfile = () => {
 			try {
 				const res = await fetch(`https://twitter-back-production-5485.up.railway.app/api/users/update`, {
 					method: "POST",
+					credentials: "include",
 					headers: {
 						"Content-Type": "application/json",
 					},

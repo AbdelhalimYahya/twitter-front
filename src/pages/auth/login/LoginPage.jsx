@@ -24,6 +24,7 @@ const LoginPage = () => {
 			try {
 				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/auth/login", {
 					method: "POST",
+					credentials: "include",
 					headers: {
 						"Content-Type": "application/json",
 					},

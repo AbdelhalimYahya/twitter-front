@@ -16,7 +16,9 @@ const Post = ({ post }) => {
 		queryKey: ["authUser"],
 		queryFn: async () => {
 			try {
-				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/auth/me");
+				const res = await fetch("https://twitter-back-production-5485.up.railway.app/api/auth/me" , {
+					credentials: "include",
+				});
 				const data = await res.json();
 				if (data.error) return null;
 				if (!res.ok) {
@@ -40,6 +42,7 @@ const Post = ({ post }) => {
 			try {
 				const res = await fetch(`https://twitter-back-production-5485.up.railway.app/api/posts/${post._id}`, {
 					method: "DELETE",
+					credentials: "include",
 				});
 				const data = await res.json();
 
@@ -62,6 +65,7 @@ const Post = ({ post }) => {
 			try {
 				const res = await fetch(`https://twitter-back-production-5485.up.railway.app/api/posts/like/${post._id}`, {
 					method: "POST",
+					credentials: "include",
 				});
 				const data = await res.json();
 				if (!res.ok) {
@@ -77,6 +81,16 @@ const Post = ({ post }) => {
 			// queryClient.invalidateQueries({ queryKey: ["posts"] });
 
 			// instead, update the cache directly for that post
+			// queryClient.setQueryData(["posts", feedType, username, userId], (oldData) => {
+			// 	if (!oldData) return oldData;
+			// 	return oldData.map((p) => {
+			// 	  if (p._id === post._id) {
+			// 		return { ...p, likes: updatedLikes };
+			// 	  }
+			// 	  return p;
+			// 	});
+			//   });
+
 			queryClient.setQueryData(["posts"], (oldData) => {
 				return oldData.map((p) => {
 					if (p._id === post._id) {
@@ -96,6 +110,7 @@ const Post = ({ post }) => {
 			try {
 				const res = await fetch(`https://twitter-back-production-5485.up.railway.app/api/posts/comment/${post._id}`, {
 					method: "POST",
+					credentials: "include",
 					headers: {
 						"Content-Type": "application/json",
 					},

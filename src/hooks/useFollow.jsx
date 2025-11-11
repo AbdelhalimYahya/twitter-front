@@ -9,6 +9,7 @@ const useFollow = () => {
 			try {
 				const res = await fetch(`https://twitter-back-production-5485.up.railway.app/api/users/follow/${userId}`, {
 					method: "POST",
+					credentials: "include",
 				});
 
 				const data = await res.json();
